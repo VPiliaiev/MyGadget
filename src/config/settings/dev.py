@@ -1,3 +1,5 @@
+import os
+
 from config.settings.base import *  # NOQA
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -8,7 +10,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-INSTALLED_APPS += []  # NOQA
+INSTALLED_APPS += ["django_extensions"]  # NOQA
 
 DATABASES = {
     "default": {
@@ -21,3 +23,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # NOQA
