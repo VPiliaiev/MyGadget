@@ -11,18 +11,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'djmoney',
     "accounts",
     "api",
     "blog",
     "common",
     "mygadget",
-    "cart",
-    "comparison",
     "config",
     "faq",
-    "orders",
-    "products",
-    "wishlist",
 ]
 
 MIDDLEWARE = [
