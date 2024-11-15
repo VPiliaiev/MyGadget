@@ -9,7 +9,9 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, related_name="answers"
+    )
     text = models.TextField()
 
     def __str__(self):

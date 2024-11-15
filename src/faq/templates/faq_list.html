@@ -1,0 +1,17 @@
+{% extends "index/index.html" %}
+
+{% block content %}
+    <h1>FAQ</h1>
+    <ul> "HI"
+        {% for question in questions %}
+            <li>
+                <strong>{{ question.text }}</strong>
+                <ul>
+                    {% for answer in question.answers.all %}
+                        <li>{{ answer.text }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

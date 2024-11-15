@@ -3,9 +3,12 @@ asttokens==2.4.1
 babel==2.16.0
 black==24.10.0
 click==8.1.7
+crispy-bootstrap5==2024.10
 decorator==5.1.1
 Django==4.2.15
+django-crispy-forms==2.3
 django-extensions==3.2.3
+django-money==3.5.3
 executing==2.1.0
 flake8==7.1.1
 ipython==8.29.0
@@ -13,7 +16,6 @@ isort==5.13.2
 jedi==0.19.1
 matplotlib-inline==0.1.7
 mccabe==0.7.0
-money-lib==3.1.0
 mypy-extensions==1.0.0
 packaging==24.1
 parso==0.8.4
