@@ -37,9 +37,8 @@ class UserRegistration(CreateView):
 class UserActivationView(RedirectView):
     url = reverse_lazy("index")
 
-    def get(self, request, uuid64, token, *args, **kwargs):
+    def get(self, request, pk, token, *args, **kwargs):
         try:
-            pk = force_str(urlsafe_base64_decode(uuid64))
             current_user = get_user_model().objects.get(pk=pk)
         except (get_user_model().DoesNotExist, ValueError, TypeError):
             return HttpResponse("Wrong data!!!")
@@ -55,7 +54,7 @@ class UserActivationView(RedirectView):
 
 class UserProfileDetailView(LoginRequiredMixin, DetailView):
     model = Customer
-    template_name = "profile/profile_detail.html"
+    template_name = "profile/user_profile.html"
     context_object_name = "customer"
 
     def get_object(self, queryset=None):

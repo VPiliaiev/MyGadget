@@ -122,4 +122,4 @@ EMAIL_HOST_PASSWORD = "bceucdrapkntirhy"
 EMAIL_PORT = 587
 EMAIL_FAIL_SILENTLY = False
 
-REGISTRATION_EMAIL_SUBJECT = "Registration email from LMS"
+REGISTRATION_EMAIL_SUBJECT = "Activate your account"

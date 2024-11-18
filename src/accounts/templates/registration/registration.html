@@ -4,7 +4,7 @@
 {% block content %}
     <form method="POST" style="width: 25em;margin: auto">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-info">Registration</button>
     </form>
 {% endblock content %}
