@@ -2,4 +2,5 @@
 max-line-length=120
 exclude=migrations,.venv
 ignore=F401
-
+per-file-ignores =
+    config/settings/dev.py: F403

@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-from django.views.generic import CreateView, DetailView, RedirectView, UpdateView
+from django.views.generic import (CreateView, DetailView, RedirectView,
+                                  UpdateView)
 
 from accounts.forms import CustomerProfileForm, UserRegistrationForm
 from accounts.models import Customer
@@ -37,8 +38,11 @@ class UserRegistration(CreateView):
 class UserActivationView(RedirectView):
     url = reverse_lazy("index")
 
-    def get(self, request, pk, token, *args, **kwargs):
+    def get(self, request, uuid64, token, *args, **kwargs):
+        print(f"UUID: {uuid64}, Token: {token}")
         try:
+            pk = force_str(urlsafe_base64_decode(uuid64))
+            print(f"Decoded PK: {pk}")
             current_user = get_user_model().objects.get(pk=pk)
         except (get_user_model().DoesNotExist, ValueError, TypeError):
             return HttpResponse("Wrong data!!!")
@@ -46,7 +50,9 @@ class UserActivationView(RedirectView):
         if current_user and TokenGenerator().check_token(current_user, token):
             current_user.is_active = True
             current_user.save()
+
             login(request, current_user)
+
             return super().get(request, *args, **kwargs)
 
         return HttpResponse("Wrong data!!!")
