@@ -143,12 +143,4 @@ EMAIL_FAIL_SILENTLY = False
 
 REGISTRATION_EMAIL_SUBJECT = "Registration Email for MyGadget"
 
-# """{
-#     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-#     .eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzMyNTA2NCwiaWF0IjoxNzMyMTE1NDY0LCJqdGkiOiJjY2M3YmE0M2ZjZTk0ZmY5Yjk2N2M2NGY2MzE4N2Y1NiIsInVzZXJfaWQiOjF9
-#     .oja13WyaUl5FogMF6aAXMJG79fnEPMoiZs-6JFaPDnM",
-#
-#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-#     eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTIyNjY0LCJpYXQiOjE3MzIxMTU0NjQsImp0aSI6IjIwMGJkY2RjYmYxYjQ5OWY5NGMwY2YzZmMzMjc5ZjNjIiwidXNlcl9pZCI6MX0
-#     .n6Pgpi7mh57DkkSLskpyjuBBBsjFLMOIdf697y9St_k"
-# }"""
+
