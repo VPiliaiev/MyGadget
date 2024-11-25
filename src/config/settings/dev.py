@@ -1,6 +1,6 @@
 import os
 
-from config.settings.base import *  # NOQA
+from config.settings.base import *
 
 from .base import *
 
