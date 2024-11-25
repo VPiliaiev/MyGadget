@@ -5,8 +5,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-from django.views.generic import (CreateView, DetailView, RedirectView,
-                                  UpdateView)
+from django.views.generic import CreateView, DetailView, RedirectView, UpdateView
 
 from accounts.forms import CustomerProfileForm, UserRegistrationForm
 from accounts.models import Customer
