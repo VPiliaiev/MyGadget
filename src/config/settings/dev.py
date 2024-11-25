@@ -1,8 +1,8 @@
 import os
 
-from config.settings.base import *
+from config.settings.base import *  # NOQA
 
-from .base import *
+from .base import *  # NOQA
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-v-y-fw9$qxpm3wb#alf2o%l3-@16%wwl^2e=%7uv5#x@ea6pn="

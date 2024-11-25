@@ -1,13 +1,8 @@
 from django.urls import path
 
-from accounts.views import (
-    UserActivationView,
-    UserLogin,
-    UserLogout,
-    UserProfileDetailView,
-    UserProfileUpdateView,
-    UserRegistration,
-)
+from accounts.views import (UserActivationView, UserLogin, UserLogout,
+                            UserProfileDetailView, UserProfileUpdateView,
+                            UserRegistration)
 
 urlpatterns = [
     path("login/", UserLogin.as_view(), name="login"),
