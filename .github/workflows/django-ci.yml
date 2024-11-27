@@ -34,4 +34,5 @@ jobs:
         python src/manage.py check
     - name: Run Tests
       run: |
-        python src/manage.py test && flake8
+        python src/manage.py test
+        flake8 src --config=.flake8

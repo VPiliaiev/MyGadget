@@ -1,0 +1,26 @@
+#docker run --rm -it --name mygadget_cont -p 8010:8010
+#-v /Users/valeriypilyaev/Desktop/Python_Pro/MyGadget/src:/my_gadget/src mygadget_image
+#./commands/start_server_dev.sh
+
+services:
+  backend:
+    build: ./
+    container_name: mygadget_container
+    working_dir: /my_gadget
+    ports:
+      - "8010:8000"
+    command: sh ./commands/start_server_dev.sh
+    volumes:
+      - ./src:/my_gadget/src
+      - ./commands:/my_gadget/commands
+  postgres:
+    image: postgres:16.4
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  pg_data: { }
