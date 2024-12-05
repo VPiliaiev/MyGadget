@@ -3,25 +3,14 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-from api.views import (
-    CartItemCreateView,
-    CartItemDeleteView,
-    CartItemListView,
-    CartItemUpdateView,
-    ComparisonListView,
-    OrderListView,
-    ProductCategoryCreateView,
-    ProductCategoryDeleteView,
-    ProductCategoryDetailView,
-    ProductCategoryListView,
-    ProductCategoryUpdateView,
-    ProductCreateView,
-    ProductDeleteView,
-    ProductDetailView,
-    ProductListView,
-    ProductUpdateView,
-    WishlistListView,
-)
+from api.views import (CartItemCreateView, CartItemDeleteView,
+                       CartItemListView, CartItemUpdateView,
+                       ComparisonListView, OrderListView,
+                       ProductCategoryCreateView, ProductCategoryDeleteView,
+                       ProductCategoryDetailView, ProductCategoryListView,
+                       ProductCategoryUpdateView, ProductCreateView,
+                       ProductDeleteView, ProductDetailView, ProductListView,
+                       ProductUpdateView, WishlistListView)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -35,8 +24,11 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+
+app_name = "api"
+
 urlpatterns = [
-    path("docs/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    path("docs/", schema_view.with_ui("redoc", cache_timeout=0), name="docs"),
     path("products/", ProductListView.as_view(), name="product_list"),
     path("products/<int:pk>/", ProductDetailView.as_view(), name="product_detail"),
     path("products/create/", ProductCreateView.as_view(), name="product_create"),
@@ -80,7 +72,6 @@ urlpatterns = [
         name="cartitem_delete",
     ),
     path("wishlists/", WishlistListView.as_view(), name="wishlist_list"),
-    # Comparison
     path("comparisons/", ComparisonListView.as_view(), name="comparison_list"),
     path("orders/", OrderListView.as_view(), name="order_list"),
     path("auth/", include("djoser.urls.jwt")),

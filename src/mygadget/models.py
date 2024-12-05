@@ -43,6 +43,70 @@ class Order(models.Model):
 class ProductCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True, null=True)
+    parent = models.ForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        related_name="subcategories",
+        blank=True,
+        null=True,
+    )
+
+    def get_breadcrumbs(self):
+        breadcrumbs = []
+        category = self
+        while category:
+            breadcrumbs.insert(0, category)
+            category = category.parent
+        return breadcrumbs
+
+    @classmethod
+    def create_default_categories(cls):
+        default_categories = [
+            {
+                "name": "Smartphones",
+                "description": "Smartphones from various brands",
+                "parent": None,
+            },
+            {
+                "name": "Tablets",
+                "description": "Tablets for work and entertainment",
+                "parent": None,
+            },
+            {
+                "name": "Laptops",
+                "description": "Laptops for home and office use",
+                "parent": None,
+            },
+            {
+                "name": "Headphones",
+                "description": "Headphones for music and gaming",
+                "parent": None,
+            },
+            {
+                "name": "Watches",
+                "description": "Smartwatches and classic models",
+                "parent": None,
+            },
+            {
+                "name": "Apple",
+                "description": "Apple smartphones",
+                "parent": "Smartphones",
+            },
+            {
+                "name": "Samsung",
+                "description": "Samsung smartphones",
+                "parent": "Smartphones",
+            },
+        ]
+        categories = {}
+        for category_data in default_categories:
+            parent_name = category_data.pop("parent", None)
+            parent = categories.get(parent_name)
+            category_data["parent"] = parent
+            category, _ = cls.objects.get_or_create(
+                name=category_data["name"], defaults=category_data
+            )
+            categories[category.name] = category
 
     def __str__(self):
         return self.name

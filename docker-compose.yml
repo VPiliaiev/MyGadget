@@ -13,6 +13,10 @@ services:
     volumes:
       - ./src:/my_gadget/src
       - ./commands:/my_gadget/commands
+    env_file:
+      - .env
+    depends_on:
+      - postgres
   postgres:
     image: postgres:16.4
     ports:

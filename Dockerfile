@@ -13,5 +13,6 @@ RUN chmod +x /my_gadget/commands/start_server_dev.sh
 
 RUN python -m pip install --upgrade & pip install -r ./requirements.txt
 
-CMD ["/bin/sh"]
+#CMD ["/bin/sh"]
+CMD ["sh", "./commands/start_server_dev.sh"]
 

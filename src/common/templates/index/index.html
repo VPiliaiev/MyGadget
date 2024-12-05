@@ -11,9 +11,14 @@
             width: auto;
             height: 50px;
         }
+
         .category-btn {
             max-width: 200px;
             flex-grow: 1;
+        }
+
+        .dropdown-menu ul {
+            padding-left: 15px;
         }
     </style>
 </head>
@@ -24,18 +29,54 @@
             <img src="{% static 'img/mygadget.jpeg' %}" alt="Logo" class="logo me-3">
         </a>
         <div class="d-flex flex-grow-1 align-items-center">
-            <button class="btn btn-outline-light category-btn me-2">Catalog</button>
-            <form class="d-flex flex-grow-1">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <div class="dropdown me-3">
+                <button class="btn btn-outline-light category-btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Catalog
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for category in categories %}
+                        <li>
+                            <a class="dropdown-item"
+                               href="{% url 'mygadget:category_detail' category.id %}">{{ category.name }}</a>
+                        </li>
+                        {% if category.subcategories.exists %}
+                            <ul>
+                                {% for subcategory in category.subcategories.all %}
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="{% url 'mygadget:category_detail' subcategory.id %}">{{ subcategory.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <form class="d-flex flex-grow-1" method="GET" action="{% url 'mygadget:product_list' %}">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search products"
+                       aria-label="Search" value="{{ request.GET.search|default:'' }}">
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
         </div>
         <div class="d-flex align-items-center ms-3">
-            <a href="{% url 'registration' %}" class="text-white me-3">Authorization</a>
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a href="{% url 'user_profile' %}" class="text-white me-3">Profile</a>
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul class="dropdown-menu" aria-labelledby="userMenuButton">
+                        <li><a class="dropdown-item" href="{% url 'user_profile_update' %}">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="{% url 'registration' %}" class="text-white me-3">Authorization</a>
+            {% endif %}
             <a href="#" class="text-white me-3">Wishlist</a>
             <a href="#" class="text-white me-3">Comparison</a>
             <a href="{% url 'faq' %}" class="text-white me-3">FAQ</a>
-            <a href="#" class="text-white"><i class="bi bi-cart"></i> Cart</a>
+            <a href="{% url 'mygadget:cart' %}" class="text-white me-3"><i class="bi bi-cart"></i> Cart</a>
         </div>
     </div>
 </header>

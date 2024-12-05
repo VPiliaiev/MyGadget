@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "crispy_forms",
+    "crispy_bootstrap5",
     "djmoney",
     "drf_yasg",
     "djoser",
