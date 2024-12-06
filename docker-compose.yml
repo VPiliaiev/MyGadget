@@ -17,6 +17,7 @@ services:
       - .env
     depends_on:
       - postgres
+      - mongo
   postgres:
     image: postgres:16.4
     ports:
@@ -25,6 +26,12 @@ services:
       - pg_data:/var/lib/postgresql/data
     env_file:
       - .env
-
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
 volumes:
   pg_data: { }
+  mongo_data: { }
