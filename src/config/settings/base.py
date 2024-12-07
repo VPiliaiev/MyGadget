@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "crispy_forms",
     "djmoney",
-    'drf_yasg',
+    "drf_yasg",
     "djoser",
     "accounts",
     "api",
@@ -78,7 +78,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
 }
 SIMPLE_JWT = {
@@ -142,5 +144,3 @@ EMAIL_PORT = 587
 EMAIL_FAIL_SILENTLY = False
 
 REGISTRATION_EMAIL_SUBJECT = "Registration Email for MyGadget"
-
-

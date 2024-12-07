@@ -24,7 +24,9 @@ class ProductAPITests(TestCase):
         self.update_url = reverse("product_update", kwargs={"pk": self.product.pk})
         self.delete_url = reverse("product_delete", kwargs={"pk": self.product.pk})
 
-        self.user = get_user_model().objects.create_user(email="user@example.com", password="qwerty1234")
+        self.user = get_user_model().objects.create_user(
+            email="user@example.com", password="qwerty1234"
+        )
         self.client.force_authenticate(user=self.user)
 
     def test_list_products(self):
