@@ -1,0 +1,35 @@
+{% extends 'index/index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5 text-center">
+        <h1>Welcome, {{ customer.first_name }}!</h1>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4 text-center">
+                <div class="mb-4">
+                    {% if customer.photo %}
+                        <h5>Avatar:</h5>
+                        <img src="{{ customer.photo.url }}" alt="Profile Photo" class="img-fluid rounded"
+                             style="max-width: 150px;">
+                    {% else %}
+                        <p><strong>No photo uploaded.</strong></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-info bg-light p-3 border rounded">
+                    <h2>Profile Details</h2>
+                    <p><strong>First Name:</strong> {{ customer.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ customer.last_name }}</p>
+                    <p><strong>Birthday:</strong> {{ customer.birth_date|date:"F j, Y" }}</p>
+                    <p><strong>Email:</strong> {{ customer.email }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'profile_edit' %}" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
+{% endblock %}

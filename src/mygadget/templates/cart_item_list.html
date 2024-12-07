@@ -1,0 +1,10 @@
+{% extends "index/index.html" %}
+
+{% block content %}
+<h1>Your Cart Items</h1>
+<ul>
+    {% for item in cart_items %}
+        <li>{{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
