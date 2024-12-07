@@ -9,4 +9,6 @@ urlpatterns = [
     path("faq/", include("faq.urls")),
     path("accounts/", include("accounts.urls")),
     path("mygadget/", include("mygadget.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/", include("api.urls")),
 ]
