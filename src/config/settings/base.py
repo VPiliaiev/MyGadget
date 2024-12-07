@@ -1,4 +1,4 @@
-import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "crispy_forms",
     "djmoney",
+    'drf_yasg',
+    "djoser",
     "accounts",
     "api",
     "common",
@@ -76,9 +78,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ]
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
+}
+
+DJOSER = {
+    "LOGIN_FIELD": "email",
+    "USER_CREATE_PASSWORD_RETYPE": True,
+    "PASSWORD_RESET_CONFIRM_RETYPE": True,
+    "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
+    "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{uid}/{token}",
 }
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -128,4 +141,6 @@ EMAIL_HOST_PASSWORD = "bceucdrapkntirhy"
 EMAIL_PORT = 587
 EMAIL_FAIL_SILENTLY = False
 
-REGISTRATION_EMAIL_SUBJECT = "Activate your account"
+REGISTRATION_EMAIL_SUBJECT = "Registration Email for MyGadget"
+
+

@@ -1,27 +1,12 @@
-from rest_framework.generics import (
-    CreateAPIView,
-    DestroyAPIView,
-    ListAPIView,
-    RetrieveAPIView,
-    UpdateAPIView,
-)
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView)
 
-from api.serializers import (
-    CartItemSerializer,
-    ComparisonSerializer,
-    OrderSerializer,
-    ProductCategorySerializer,
-    ProductSerializer,
-    WishlistSerializer,
-)
-from mygadget.models import (
-    CartItem,
-    Comparison,
-    Order,
-    Product,
-    ProductCategory,
-    Wishlist,
-)
+from api.serializers import (CartItemSerializer, ComparisonSerializer,
+                             OrderSerializer, ProductCategorySerializer,
+                             ProductSerializer, WishlistSerializer)
+from mygadget.models import (CartItem, Comparison, Order, Product,
+                             ProductCategory, Wishlist)
 
 
 class ProductListView(ListAPIView):

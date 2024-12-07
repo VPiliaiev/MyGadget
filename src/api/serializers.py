@@ -1,13 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 
-from mygadget.models import (
-    CartItem,
-    Comparison,
-    Order,
-    Product,
-    ProductCategory,
-    Wishlist,
-)
+from mygadget.models import (CartItem, Comparison, Order, Product,
+                             ProductCategory, Wishlist)
 
 
 class ProductSerializer(ModelSerializer):
