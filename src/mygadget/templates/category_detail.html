@@ -1,0 +1,24 @@
+<h1>{{ category.name }}</h1>
+<p>{{ category.description }}</p>
+
+{% if subcategories.exists %}
+    <h2>Subcategories:</h2>
+    <ul>
+        {% for subcategory in subcategories %}
+            <li><a href="{% url 'mygadget:category_detail' subcategory.id %}">{{ subcategory.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>Products:</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'mygadget:product_detail' product.id %}">
+                    {{ product.name }} - {{ product.price }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No products available</li>
+        {% endfor %}
+    </ul>
+{% endif %}

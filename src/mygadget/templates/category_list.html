@@ -1,0 +1,24 @@
+<div class="dropdown">
+    <button class="btn btn-outline-light category-btn me-2 dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-bs-toggle="dropdown" aria-expanded="false">
+        Catalog
+    </button>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'mygadget:category_detail' category.id %}">{{ category.name }}</a>
+                {% if category.subcategories.exists %}
+                    <ul>
+                        {% for subcategory in category.subcategories.all %}
+                            <li>
+                                <a href="{% url 'mygadget:category_detail' subcategory.id %}">
+                                    {{ subcategory.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

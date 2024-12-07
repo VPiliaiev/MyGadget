@@ -7,6 +7,12 @@ WORKDIR /my_gadget
 
 COPY ./src ./src
 COPY ./requirements.txt ./requirements.txt
+COPY ./commands ./commands
+
+RUN chmod +x /my_gadget/commands/start_server_dev.sh
 
 RUN python -m pip install --upgrade & pip install -r ./requirements.txt
-CMD ["python", "src/manage.py", "runserver", "8008"]
+
+#CMD ["/bin/sh"]
+CMD ["sh", "./commands/start_server_dev.sh"]
+
