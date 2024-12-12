@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "mygadget",
     "config",
     "faq",
+    "blog",
 ]
 
 MIDDLEWARE = [
@@ -114,8 +115,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.Customer"
 
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "config/static"]
+STATIC_URL = "/static/"
+# STATICFILES_DIRS = [BASE_DIR / "config/../../static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
