@@ -1,9 +1,15 @@
 from django.urls import path
 
-from mygadget.views import (AddToCartView, CartItemView, CategoryDetailView,
-                            CategoryListView, DeleteCartItemView,
-                            ProductDetailView, ProductListView,
-                            UpdateCartItemView)
+from mygadget.views import (
+    AddToCartView,
+    CartItemView,
+    CategoryDetailView,
+    CategoryListView,
+    DeleteCartItemView,
+    ProductDetailView,
+    ProductListView,
+    UpdateCartItemView,
+)
 
 app_name = "mygadget"
 

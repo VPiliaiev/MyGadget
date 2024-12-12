@@ -1,7 +1,14 @@
 from django.contrib import admin
 
-from mygadget.models import (CartItem, Comparison, Order, Product,
-                             ProductCategory, ProductImage, Wishlist)
+from mygadget.models import (
+    CartItem,
+    Comparison,
+    Order,
+    Product,
+    ProductCategory,
+    ProductImage,
+    Wishlist,
+)
 
 
 @admin.register(CartItem)
